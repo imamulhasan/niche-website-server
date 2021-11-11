@@ -58,7 +58,6 @@ async function run(){
         // post singel product from client 
         app.post('/product', async (req, res)=>{
             const query = req.body;
-            console.log(query);
             const result = await productsCollection.insertOne(query);
             res.send(result)
         })
@@ -67,7 +66,6 @@ async function run(){
         app.post('/order', async (req, res)=>{
             const query = req.body;
             const result = await ordersCollection.insertOne(query);
-            console.log(query);
             res.send(result)
         })
 
@@ -119,7 +117,7 @@ async function run(){
             const query ={email:email}
             const result = await usersCollection.findOne(query)
             let isAdmin = false;
-            if(result.role==='admin'){
+            if(result?.role==='admin'){
                 isAdmin=true;
             }
             res.send({admin:isAdmin})
@@ -148,7 +146,6 @@ async function run(){
           const query = {_id:ObjectId(id)}
           const result = await ordersCollection.deleteOne(query)
           res.send(result)
-          console.log(result);
         })
 
         // orders pending to shipped
