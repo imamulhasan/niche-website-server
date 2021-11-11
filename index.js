@@ -14,7 +14,7 @@ app.use(express.json())
 // firebase connet 
 
 
-var serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
+var serviceAccount = require("./bike-store-bf46c-firebase-adminsdk-st1fi-0269abad68.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
